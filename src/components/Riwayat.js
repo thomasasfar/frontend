@@ -74,25 +74,25 @@ const FormAsign = () => {
         </Table>
       </Container>
 
-      {/* Modal Detail */}
-      <Modal show={tampil} onHide={handleTutup}>
 
+      {forms.map((form, index) => (
+      <Modal show={tampil} key={form.form_id} onHide={handleTutup}>
         <Modal.Header closeButton>
-          <Modal.Title id="exampleModalToggleLabel">Form xxx</Modal.Title>
+          <Modal.Title id="exampleModalToggleLabel"></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="formId">
               <Form.Label>ID Form</Form.Label>
-              <h6>F00xxx</h6>
+              <h6>{form.form_id}</h6>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formDescription">
               <Form.Label>Description</Form.Label>
-              <h6>Desc xxxxxx</h6>
+              <h6>{form.description}</h6>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formDescription">
               <Form.Label>Uploaded At</Form.Label>
-              <h6>xx/xx/xxxx xx:xx</h6>
+              <h6>{form.updated_at}</h6>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formDescription">
               <Form.Label>Download</Form.Label><br/>
@@ -115,6 +115,7 @@ const FormAsign = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      ))}
     </div>
   );
 };
