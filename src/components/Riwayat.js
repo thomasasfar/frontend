@@ -12,24 +12,18 @@ import "../styles/FormAsign.css";
 import axios from "axios";
 
 const FormAsign = () => {
-
   const [forms, setForm] = useState([]);
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/forms')
+      .get("http://localhost:3000/forms")
       .then((response) => {
         setForm(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, [])
-
-  // const getForms = async () => {
-  //   const response = await axios.get("http://localhost:5000/forms");
-  //   setForm(response.data);
-  // } 
+  }, []);
 
   console.log(forms);
 
@@ -59,16 +53,16 @@ const FormAsign = () => {
           <tbody>
             {forms.map((form, index) => (
               <tr key={form.form_id}>
-              <td>{index + 1}</td>
-              <td>{form.updated_at}</td>
-              <td>{form.title}</td>
-              <td>{form.description}</td>
-              <td>
-                <Button variant="primary" onClick={handleTampil}>
-                  Detail
-                </Button>
-              </td>
-            </tr>
+                <td>{index + 1}</td>
+                <td>{form.updated_at}</td>
+                <td>{form.title}</td>
+                <td>{form.description}</td>
+                <td>
+                  <Button variant="primary" onClick={handleTampil}>
+                    Detail
+                  </Button>
+                </td>
+              </tr>
             ))}
           </tbody>
         </Table>
@@ -76,7 +70,6 @@ const FormAsign = () => {
 
       {/* Modal Detail */}
       <Modal show={tampil} onHide={handleTutup}>
-
         <Modal.Header closeButton>
           <Modal.Title id="exampleModalToggleLabel">Form xxx</Modal.Title>
         </Modal.Header>
@@ -95,10 +88,9 @@ const FormAsign = () => {
               <h6>xx/xx/xxxx xx:xx</h6>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formDescription">
-              <Form.Label>Download</Form.Label><br/>
-              <Button variant="success">
-                Close
-              </Button>
+              <Form.Label>Download</Form.Label>
+              <br />
+              <Button variant="success">Close</Button>
             </Form.Group>
           </Form>
         </Modal.Body>
