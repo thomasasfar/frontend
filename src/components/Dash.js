@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Col, Row, Container } from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 import "../styles/Dash.css";
 
 const Dash = () => {

@@ -1,0 +1,13 @@
+.kolom {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.judul {
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    font-style: normal;
+}
