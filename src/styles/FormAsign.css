@@ -1,0 +1,16 @@
+.warnabackground{
+    background-color: #1D3752;
+}
+
+.judul{
+    font-weight: 600;
+    font-size: large;
+}
+
+.badan {
+    height: 100vh;
+}
+
+.warnacont {
+    background-color: rgb(238, 234, 229);
+}

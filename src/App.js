@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Navigation from  "./components/Navigation"
 import './App.css';
+import FormAsign from "./components/FormAsign";
+import Riwayat from "./components/Riwayat"
+import Dash from "./components/Dash";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="fontku warnabadan badan">
+        <BrowserRouter>
+          <Navigation />
+          <Routes>
+            <Route path="/form" exact element={<FormAsign />} />
+            <Route path="/riwayat" exact element={<Riwayat />}></Route>
+            <Route path="/" exact element={<Dash />}></Route>
+          </Routes>
+        </BrowserRouter>
     </div>
   );
 }
