@@ -5,13 +5,15 @@ import FormAsign from "./components/FormAsign";
 import Riwayat from "./components/Riwayat";
 import Dash from "./components/Dash";
 import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
   return (
-    <div className="fontku warnabadan badan">
+    <div className="fontku warnabadan">
       <BrowserRouter>
         <Routes>
           <Route path="/login" exact element={<Login />}></Route>
+          <Route path="/register" exact element={<Register />}></Route>
         </Routes>
         
         

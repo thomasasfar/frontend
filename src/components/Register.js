@@ -2,10 +2,9 @@ import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "../styles/Login.css";
 
-const Login = () => {
+const Register = () => {
   return (
     <div>
-      <section className="vh-100">
         <Container fluid className="h-custom">
           <Row className="d-flex justify-content-center align-items-center h-100">
             <Col
@@ -13,7 +12,7 @@ const Login = () => {
               lg={6}
               xl={4}
               offset={{ xl: 0 }}
-              className="mt-5 px-3 py-5"
+              className="mt-1 px-3 py-1"
             >
               <Form id="login">
                 <div className="card-body p-3 text-center">
@@ -22,15 +21,41 @@ const Login = () => {
 
                 {/* Kasih kolom */}
                 <Container className="kolom pt-3 px-4">
+                  {/* Nama input */}
+                  <Form.Group
+                    className="form-outline mb-3 "
+                    controlId="nama"
+                  >
+                    <Form.Label>Nama</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter your name"
+                      size="lg"
+                    />
+                  </Form.Group>
+
+                  {/* Email input */}
+                  <Form.Group
+                    className="form-outline mb-3 "
+                    controlId="nama"
+                  >
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      type="email"
+                      placeholder="Enter your email"
+                      size="lg"
+                    />
+                  </Form.Group>
+
                   {/* Username input */}
                   <Form.Group
-                    className="form-outline mb-4 "
+                    className="form-outline mb-3 "
                     controlId="username"
                   >
                     <Form.Label>Username</Form.Label>
                     <Form.Control
-                      type="id"
-                      placeholder="Enter your username"
+                      type="text"
+                      placeholder="Create a username"
                       size="lg"
                     />
                   </Form.Group>
@@ -44,6 +69,19 @@ const Login = () => {
                     <Form.Control
                       type="password"
                       placeholder="Enter password"
+                      size="lg"
+                    />
+                  </Form.Group>
+
+                  {/*Confirm Password input */}
+                  <Form.Group
+                    className="form-outline mb-3"
+                    controlId="password"
+                  >
+                    <Form.Label>Confirm Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      placeholder="Enter password again"
                       size="lg"
                     />
                   </Form.Group>
@@ -62,9 +100,9 @@ const Login = () => {
                         </Button>
                       </a>
                       <p className="small fw-bold mt-2 pt-1 mb-0">
-                        Don't have an account?
-                        <a href="register" className="link-danger">
-                          Register
+                        Already have account?
+                        <a href="login" className="link-danger">
+                          Login
                         </a>
                       </p>
                     </div>
@@ -74,9 +112,8 @@ const Login = () => {
             </Col>
           </Row>
         </Container>
-      </section>
     </div>
   );
 };
 
-export default Login;
+export default Register;
