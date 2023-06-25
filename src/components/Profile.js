@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
