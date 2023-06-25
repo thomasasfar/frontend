@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Row,
@@ -8,31 +8,45 @@ import {
   Form,
   Modal,
 } from "react-bootstrap";
-import "../styles/FormAsign.css";
-import { useState } from "react";
+import axios from "axios";
 
-const FormAsign = () => {
+const Riwayat = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [submissions, setSubmissions] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedForm, setSelectedForm] = useState(null);
 
-  const [tampil, setTampil] = useState(false);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/submissions", { withCredentials: true })
+      .then((response) => {
+        setSubmissions(response.data);
+        console.log(submissions);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
-  const handleTutup = () => setTampil(false);
-  const handleTampil = () => setTampil(true);
+  const handleModalOpen = (submissions) => {
+    setSelectedForm(submissions);
+    setShowModal(true);
+  };
+
+  const handleModalClose = () => {
+    setSelectedForm(null);
+    setShowModal(false);
+  };
 
   return (
-    <div className="warnabackground badan mt-5">
+    <div className="warnabackground badan">
       <Container className="mt-5 mb-5 px-5 pt-3 pb-5 warnacont">
         <Row>
           <Col md={3}>
             <h3>Form Assignment</h3>
-          </Col>
-          <Col md={{ span: 2, offset: 7 }}>
-            <Button variant="primary" onClick={handleShow}>
-              Add
-            </Button>
           </Col>
         </Row>
         <Table striped hover>
@@ -41,88 +55,81 @@ const FormAsign = () => {
               <th>No</th>
               <th>Date</th>
               <th>Heading</th>
-              <th>Description</th>
+              <th>Instruction</th>
               <th>Info</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>xx</td>
-              <td>xxxxx</td>
-              <td>xxxxx</td>
-              <td>xxxxx</td>
-              <td>
-                <Button variant="primary" onClick={handleTampil}>
-                  Detail
-                </Button>
-              </td>
-            </tr>
+            {submissions.map((submissions, index) => (
+              <tr key={submissions.submission_id}>
+                <td>{index + 1}</td>
+                <td>
+                  {new Date(submissions.updated_at).toLocaleDateString(
+                    "id-ID",
+                    {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    }
+                  )}
+                </td>
+                <td>{submissions.title}</td>
+                <td>{submissions.Instruksi}</td>
+                <td>
+                  <Button
+                    variant="primary"
+                    onClick={() => handleModalOpen(submissions)}
+                  >
+                    Detail
+                  </Button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </Container>
 
-      {/* Modal Add */}
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={showModal} onHide={handleModalClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Form</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="formName">
-              <Form.Label>Header Form</Form.Label>
-              <Form.Control type="text" placeholder="Form Name" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formDescription">
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                as="textarea"
-                placeholder="Description"
-                name="desc"
-                rows={3}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formFile">
-              <Form.Label>Add File</Form.Label>
-              <Form.Control type="file" />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
-      {/* Modal Detail */}
-      <Modal show={tampil} onHide={handleTutup}>
-        <Modal.Header closeButton>
-          <Modal.Title id="exampleModalToggleLabel">Form xxx</Modal.Title>
+          <Modal.Title id="exampleModalToggleLabel">Form Detail</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="formId">
               <Form.Label>ID Form</Form.Label>
-              <h6>F00xxx</h6>
+              <h6>{selectedForm && selectedForm.form_id}</h6>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formDescription">
               <Form.Label>Description</Form.Label>
-              <h6>Desc xxxxxx</h6>
+              <h6>{selectedForm && selectedForm.description}</h6>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formDescription">
+              <Form.Label>Uploaded At</Form.Label>
+              <h6>
+                {selectedForm && (
+                  <Form.Group className="mb-3" controlId="formDescription">
+                    <h6>
+                      {selectedForm &&
+                        new Date(selectedForm.updated_at).toLocaleString(
+                          "id-ID",
+                          {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            second: "2-digit",
+                          }
+                        )}
+                    </h6>
+                  </Form.Group>
+                )}
+              </h6>
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            variant="warning"
-            data-bs-target="#exampleModalToggle2"
-            data-bs-toggle="modal"
-          >
-            Submission
-          </Button>
-          <Button variant="secondary" onClick={handleTutup}>
+          <Button variant="secondary" onClick={handleModalClose}>
             Close
           </Button>
         </Modal.Footer>
@@ -131,4 +138,4 @@ const FormAsign = () => {
   );
 };
 
-export default FormAsign;
+export default Riwayat;
