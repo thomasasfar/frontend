@@ -108,6 +108,28 @@ const FormAsign = () => {
     }
   };
 
+  const handleDeleteForm = async (form) => {
+    const formId = form.form_id;
+    try {
+      const response = await axios.post(
+        `http://localhost:3000/forms/${formId}/delete`,
+        {
+          withCredentials: true,
+        },
+        console.log(formId)
+      );
+      if (response.status === 200) {
+        // Menghapus form dari daftar setelah berhasil dihapus
+        setForms(forms.filter((form) => form.form_id !== formId));
+        console.log("Form berhasil dihapus!");
+      } else {
+        console.log("Gagal menghapus form");
+      }
+    } catch (error) {
+      console.log("Terjadi kesalahan saat menghapus form:", error);
+    }
+  };
+
   return (
     <div className="warnabackground badan">
       <Container className="mt-5 mb-5 px-5 pt-3 pb-5 warnacont">
@@ -152,6 +174,14 @@ const FormAsign = () => {
                       onClick={() => handleModalOpen(form)}
                     >
                       Detail
+                    </Button>
+                  </td>
+                  <td>
+                    <Button
+                      variant="danger"
+                      onClick={() => handleDeleteForm(form)}
+                    >
+                      Delete
                     </Button>
                   </td>
                 </tr>
@@ -213,11 +243,11 @@ const FormAsign = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleAddForm}>
+          <Button variant="success" onClick={handleAddForm}>
             Save Changes
+          </Button>
+          <Button variant="danger" onClick={handleClose}>
+            Cancel
           </Button>
         </Modal.Footer>
       </Modal>
@@ -262,7 +292,7 @@ const FormAsign = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleModalClose}>
+          <Button variant="danger" onClick={handleModalClose}>
             Close
           </Button>
         </Modal.Footer>
