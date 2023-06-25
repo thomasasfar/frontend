@@ -4,3 +4,7 @@
     height: 320px;
     border-radius: 5px;
 }
+
+.badan-dash {
+    min-height: 100vh;
+}
