@@ -66,9 +66,14 @@ const Riwayat = () => {
   return (
     <div className="warnabackground badan">
       <Container className="mt-5 mb-5 px-5 pt-3 pb-5 warnacont">
-        <Row>
+        <Row className="mb-3">
           <Col md={3}>
-            <h3>Form Assignment</h3>
+            <h3>Submissions</h3>
+          </Col>
+          <Col md={{ offset: 7 }}>
+            <Button variant="primary" onClick={handleShow}>
+              New Submission
+            </Button>
           </Col>
         </Row>
         <Table striped hover>
@@ -110,6 +115,61 @@ const Riwayat = () => {
           </tbody>
         </Table>
       </Container>
+
+      {/* Input Kode Form */}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Enter Form Code</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="formName">
+              <Form.Label>Form Code</Form.Label>
+              <Form.Control type="text" placeholder="Form Name" />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="success">Enter</Button>
+          <Button variant="danger" onClick={handleClose}>
+            Cancel
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Setelah Kode Form Diinputkan */}
+      <Modal onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Form</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="formName">
+              <Form.Label>Header Form</Form.Label>
+              <Form.Control type="text" placeholder="Form Name" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formDescription">
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                placeholder="Description"
+                name="desc"
+                rows={3}
+              />
+            </Form.Group>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Label>Submit File</Form.Label>
+              <Form.Control type="file" />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="success">Save Changes</Button>
+          <Button variant="danger" onClick={handleClose}>
+            Cancel
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
       <Modal show={showModal} onHide={handleModalClose}>
         <Modal.Header closeButton>

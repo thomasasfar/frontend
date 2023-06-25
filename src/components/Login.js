@@ -28,7 +28,6 @@ const Login = () => {
       }
       if (data) {
         sessionStorage.setItem("token", data.token);
-        sessionStorage.setItem("user_id", data.user);
         window.location.replace("/");
       }
     } catch (err) {
