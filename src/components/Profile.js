@@ -11,6 +11,7 @@ import {
 import "../styles/Profile.css";
 import profilePhoto from "../assets/images/profil.svg";
 
+
 const Profile = () => {
   return (
     <section className="vh-100" style={{ backgroundColor: "#f4f5f7" }}>

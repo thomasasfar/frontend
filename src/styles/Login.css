@@ -11,3 +11,9 @@
     color: #fff;
     font-style: normal;
 }
+
+.regis-warning {
+    color: red;
+    font-weight: 700;
+    font-style: inherit;
+}
