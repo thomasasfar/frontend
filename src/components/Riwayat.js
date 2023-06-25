@@ -36,6 +36,28 @@ const Riwayat = () => {
     setShowModal(true);
   };
 
+  const handleDownload = async () => {
+    const nama_file = selectedForm.uploaded_file;
+    console.log(nama_file);
+    try {
+      const response = await fetch(
+        `http://localhost:3000/download/${nama_file}`,
+        {
+          withCredentials: true,
+        }
+      );
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "file.pdf";
+      link.click();
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.log("Terjadi kesalahan saat mengunduh file:", error);
+    }
+  };
+
   const handleModalClose = () => {
     setSelectedForm(null);
     setShowModal(false);
@@ -135,9 +157,8 @@ const Riwayat = () => {
               />
               <Button
                 variant="primary"
-                file_url="http://" // URL Masih Kosong
-                href={selectedForm && selectedForm.file_url}
                 download={selectedForm && selectedForm.uploaded_file}
+                onClick={handleDownload}
               >
                 Download
               </Button>
