@@ -1,8 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "../styles/Login.css";
 
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // const history = use.history();
+
+    setUsername("");
+    setPassword("");
+
+    try {
+      const res = await fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        body: JSON.stringify({ username, password }),
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+      const data = await res.json();
+      console.log(data.user);
+      if (data.errors) {
+        console.log(data.errors.username);
+        console.log(data.errors.password);
+      }
+      if (data) {
+        sessionStorage.setItem("token", data.token);
+        sessionStorage.setItem("user_id", data.user);
+        window.location.replace("/");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <section className="vh-100">
@@ -15,16 +48,14 @@ const Login = () => {
               offset={{ xl: 0 }}
               className="mt-5 px-3 py-5"
             >
-              <Form id="login">
+              <Form id="login" onSubmit={handleSubmit}>
                 <div className="card-body p-3 text-center">
                   <i className="judul">Sign in to Kumpulin</i>
                 </div>
 
-                {/* Kasih kolom */}
                 <Container className="kolom pt-3 px-4">
-                  {/* Username input */}
                   <Form.Group
-                    className="form-outline mb-4 "
+                    className="form-outline mb-4"
                     controlId="username"
                   >
                     <Form.Label>Username</Form.Label>
@@ -32,10 +63,11 @@ const Login = () => {
                       type="text"
                       placeholder="Enter your username"
                       size="lg"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
                     />
                   </Form.Group>
 
-                  {/* Password input */}
                   <Form.Group
                     className="form-outline mb-3"
                     controlId="password"
@@ -45,6 +77,8 @@ const Login = () => {
                       type="password"
                       placeholder="Enter password"
                       size="lg"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </Form.Group>
 
@@ -55,12 +89,10 @@ const Login = () => {
                   </div>
 
                   <div className="text-center text-lg-start">
-                    <div className="card-body py-3 text-center">
-                      <a href="dash.html" className="d-grid">
-                        <Button type="submit" variant="primary" size="lg">
-                          Sign in
-                        </Button>
-                      </a>
+                    <div className="card-body py-3 text-center d-grid">
+                      <Button type="submit" variant="primary" size="lg">
+                        Sign in
+                      </Button>
                       <p className="small fw-bold mt-2 pt-1 mb-0">
                         Don't have an account?
                         <a href="register" className="link-danger">
