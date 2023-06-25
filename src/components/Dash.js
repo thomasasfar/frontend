@@ -2,8 +2,10 @@ import React from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import "../styles/Dash.css";
 import axios from "axios";
+import Redirect from "./Redirect";
 
 const Dash = () => {
+  Redirect();
 
   return (
     <div className="badan-dash">

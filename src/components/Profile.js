@@ -19,6 +19,7 @@ import "../styles/Profile.css";
 import profilePhoto from "../assets/images/profile.svg";
 import pPhoto from "../assets/images/photo.png";
 
+
 const Profile = () => {
   const [avatarURL, setAvatarURL] = useState(null);
 

@@ -9,8 +9,12 @@ import {
   Modal,
 } from "react-bootstrap";
 import axios from "axios";
+import Redirect from "./Redirect";
 
 const Riwayat = () => {
+  
+  Redirect();
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
