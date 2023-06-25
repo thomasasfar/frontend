@@ -15,6 +15,16 @@ const Register = () => {
   const Register = async (e) => {
     e.preventDefault();
 
+    if (!name || !email || !username || !password || !confPassword) {
+      setMsg("Please fill in all fields");
+      return;
+    }
+  
+    if (password !== confPassword) {
+      setMsg("Passwords do not match");
+      return;
+    }
+
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -31,6 +41,24 @@ const Register = () => {
       body: urlencoded,
       redirect: "follow",
     };
+
+    const checkDuplicateUsername = async (username) => {
+      try {
+        const response = await fetch(`http://localhost:3000/users/check-duplicate/username/${username}`);
+        const data = await response.json();
+    
+    if (data.usernameTaken) {
+      setMsg("Username is already taken");
+      return true;
+    }
+
+    return false;
+  } catch (error) {
+    console.error("Error checking duplicate username:", error);
+    // Handle the error accordingly
+      }
+    };
+    
 
     fetch("http://localhost:3000/auth/register", requestOptions)
       .then(function (res) {
@@ -76,7 +104,7 @@ const Register = () => {
 
               {/* Kasih kolom */}
               <Container className="kolom pt-3 px-4">
-                <p className="text-center">{msg}</p>
+                <p className="text-center regis-warning">{msg}</p>
                 {/* Nama input */}
                 <Form.Group className="form-outline mb-3 " controlId="nama">
                   <Form.Label>Nama</Form.Label>

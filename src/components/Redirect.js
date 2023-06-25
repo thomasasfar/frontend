@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 // import { useHistory } from "use-history";
 
 const Redirect = () => {
@@ -13,9 +12,6 @@ const Redirect = () => {
     if (!isLoggedIn) {
       // Jika pengguna belum login, arahkan ke halaman login
       navigate("/login");
-    } else {
-      // Jika pengguna sudah login, arahkan ke halaman berikutnya (misalnya halaman home)
-      navigate("/home");
     }
   }, [navigate]);
 

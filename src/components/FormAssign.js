@@ -12,8 +12,11 @@ import axios from "axios";
 import ReactPaginate from "react-paginate";
 import "bulma/css/bulma.css";
 import "../styles/FormAsign.css";
+import Redirect from "./Redirect";
 
 const FormAsign = () => {
+  Redirect();
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -40,7 +43,7 @@ const FormAsign = () => {
 
   const getForms = async () => {
     const response = await axios.get(
-      `http://localhost:3000/forms/formMe?page=${page}&limit=${limit}`
+      "http://localhost:3000/forms/formMe?page=${page}&limit=${limit}"
       // `http://localhost:3000/forms`
     );
     setForms(response.data.result);
