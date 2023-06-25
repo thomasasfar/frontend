@@ -82,12 +82,6 @@ const Login = () => {
                     />
                   </Form.Group>
 
-                  <div className="d-flex justify-content-between align-items-center">
-                    <a href="#!" className="text-body">
-                      Forgot password?
-                    </a>
-                  </div>
-
                   <div className="text-center text-lg-start">
                     <div className="card-body py-3 text-center d-grid">
                       <Button type="submit" variant="primary" size="lg">

@@ -6,6 +6,7 @@ import Riwayat from "./components/Riwayat";
 import Dash from "./components/Dash";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -41,6 +42,16 @@ function App() {
             element={
               <>
                 <Navigation /> <Dash />
+              </>
+            }
+          ></Route>
+          <Route
+            path="/profile"
+            exact
+            element={
+              <>
+                {" "}
+                <Navigation /> <Profile />{" "}
               </>
             }
           ></Route>

@@ -40,7 +40,7 @@ const FormAsign = () => {
 
   const getForms = async () => {
     const response = await axios.get(
-      `http://localhost:3000/forms?page=${page}&limit=${limit}`
+      `http://localhost:3000/forms/formMe?page=${page}&limit=${limit}`
       // `http://localhost:3000/forms`
     );
     setForms(response.data.result);
@@ -131,22 +131,22 @@ const FormAsign = () => {
               <th>Info</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="font-body-table">
             {forms.map((form, index) => {
               const currentNumber = page * limit + index + 1;
               return (
                 <tr key={form.form_id}>
-                  <td>{currentNumber}</td>
-                  <td>
+                  <td width="6%">{currentNumber}</td>
+                  <td width="15%">
                     {new Date(form.created_at).toLocaleDateString("id-ID", {
                       day: "2-digit",
                       month: "2-digit",
                       year: "numeric",
                     })}
                   </td>
-                  <td>{form.title}</td>
-                  <td>{form.description}</td>
-                  <td>
+                  <td width="24%">{form.title}</td>
+                  <td width="40%">{form.description}</td>
+                  <td width="15%">
                     <Button
                       variant="primary"
                       onClick={() => handleModalOpen(form)}
