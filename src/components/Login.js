@@ -18,14 +18,15 @@ const Login = () => {
         method: "POST",
         body: JSON.stringify({ username, password }),
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
       });
       const data = await res.json();
-      console.log(data);
+      console.log(data.user);
       if (data.errors) {
         console.log(data.errors.username);
         console.log(data.errors.password);
       }
-      if (data.user) {
+      if (data) {
         sessionStorage.setItem("token", data.token);
         sessionStorage.setItem("user_id", data.user);
         window.location.replace("/");
