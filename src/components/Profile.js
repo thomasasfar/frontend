@@ -50,7 +50,8 @@ const Profile = () => {
                             <Form.Control
                               type="text"
                               placeholder="Enter your name"
-                              disabled
+                              readOnly
+                              style={{ border: "none",borderRadius: 0, borderBottom: "1px solid #ced4da" }}
                             />
                           </Col>
                         </Form.Group>
@@ -67,7 +68,8 @@ const Profile = () => {
                             <Form.Control
                               type="text"
                               placeholder="Enter your name"
-                              disabled
+                              readOnly
+                              style={{ border: "none",borderRadius: 0, borderBottom: "1px solid #ced4da" }}
                             />
                           </Col>
                         </Form.Group>
@@ -79,12 +81,13 @@ const Profile = () => {
                         >
                           <Form.Label column sm={3}>
                             Email
-                          </Form.Label>
+                          </Form.Label >
                           <Col sm={9}>
                             <Form.Control
                               type="email"
                               placeholder="Enter your name"
-                              disabled
+                              readOnly
+                              style={{ border: "none",borderRadius: 0, borderBottom: "1px solid #ced4da" }}
                             />
                           </Col>
                         </Form.Group>
