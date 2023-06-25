@@ -22,8 +22,7 @@ function App() {
             exact
             element={
               <>
-                {" "}
-                <Navigation /> <FormAssign />{" "}
+                <Navigation /> <FormAssign />
               </>
             }
           />
@@ -32,8 +31,7 @@ function App() {
             exact
             element={
               <>
-                {" "}
-                <Navigation /> <Riwayat />{" "}
+                <Navigation /> <Riwayat />
               </>
             }
           ></Route>
@@ -42,8 +40,7 @@ function App() {
             exact
             element={
               <>
-                {" "}
-                <Navigation /> <Dash />{" "}
+                <Navigation /> <Dash />
               </>
             }
           ></Route>
