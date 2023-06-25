@@ -52,7 +52,6 @@ const FormAsign = () => {
     var urlencoded = new URLSearchParams();
     urlencoded.append("description", formDescription);
     urlencoded.append("title", formHeader);
-    urlencoded.append("user_id", "2");
 
     var requestOptions = {
       method: "POST",
