@@ -126,10 +126,26 @@ const Riwayat = () => {
                 )}
               </h6>
             </Form.Group>
+            <Form.Group className="mb-3" controlId="formDescription">
+              <Form.Label>Download File</Form.Label>
+              <Form.Control
+                type="text"
+                value={selectedForm && selectedForm.uploaded_file}
+                readOnly
+              />
+              <Button
+                variant="primary"
+                file_url="http://" // URL Masih Kosong
+                href={selectedForm && selectedForm.file_url}
+                download={selectedForm && selectedForm.uploaded_file}
+              >
+                Download
+              </Button>
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleModalClose}>
+          <Button variant="danger" onClick={handleModalClose}>
             Close
           </Button>
         </Modal.Footer>

@@ -213,11 +213,11 @@ const FormAsign = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleAddForm}>
+          <Button variant="success" onClick={handleAddForm}>
             Save Changes
+          </Button>
+          <Button variant="danger" onClick={handleClose}>
+            Cancel
           </Button>
         </Modal.Footer>
       </Modal>
@@ -262,7 +262,7 @@ const FormAsign = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleModalClose}>
+          <Button variant="danger" onClick={handleModalClose}>
             Close
           </Button>
         </Modal.Footer>
