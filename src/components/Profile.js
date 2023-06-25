@@ -77,13 +77,17 @@ const Profile = () => {
   const handleSave = async () => {
     setEditMode(false);
     try {
-      await axios.post("http://localhost:3000/users/edit", {
+      const response = await axios.post("http://localhost:3000/users/edit", {
         name,
         username,
         email,
       });
+      console.log(name);
+      console.log("Profile data updated successfully:", response.data);
+      // Lakukan tindakan lain setelah data berhasil disimpan ke dalam database
     } catch (error) {
       console.log("Error updating profile data:", error);
+      // Lakukan penanganan kesalahan, misalnya menampilkan pesan error kepada pengguna
     }
   };
 
@@ -250,7 +254,7 @@ const Profile = () => {
                           Cancel
                         </Button>
                       </Col>
-                      <Col md={{ span: 2 }} sm={5}>
+                      <Col md={{ span: 2 }} sm={6}>
                         <Button variant="primary" onClick={handleSave}>
                           Save
                         </Button>
