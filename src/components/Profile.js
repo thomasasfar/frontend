@@ -19,7 +19,6 @@ import "../styles/Profile.css";
 import profilePhoto from "../assets/images/profile.svg";
 import pPhoto from "../assets/images/photo.png";
 
-
 const Profile = () => {
   const [avatarURL, setAvatarURL] = useState(null);
 
@@ -113,75 +112,6 @@ const Profile = () => {
       })
       .catch((error) => console.log("error", error));
   };
-
-  // const [imgCrop, setimgCrop] = useState(false);
-  // const [editedImage, setEditedImage] = useState(null);
-  // const [storeImage, setstoreImage] = useState([]);
-
-  // const onCrop = (view) => {
-  //   setimgCrop(view);
-  //   setEditedImage(view);
-  // };
-
-  // const onClose = () => {
-  //   setimgCrop(null);
-  // };
-
-  // const handleImageSave = () => {
-  //   setstoreImage([...storeImage, { imgCrop }]);
-  //   console.log(storeImage);
-  //   setdialogs(false);
-  //   // if (editedImage) {
-  //   //   const formData = new FormData();
-  //   //   formData.append("avatar", editedImage);
-
-  //   //   fetch("http://localhost:3000/users/edit", {
-  //   //     method: "POST",
-  //   //     body: formData,
-  //   //     credentials: "include",
-  //   //   })
-  //   //     .then((response) => response.json())
-  //   //     .then((data) => {
-  //   //       // Lakukan tindakan lain dengan respons dari server
-  //   //       console.log(data);
-  //   //       setdialogs(false);
-  //   //     })
-  //   //     .catch((error) => {
-  //   //       // Tangani error
-  //   //       console.error(error);
-  //   //     });
-  //   // }
-  // };
-
-  // const saveImage = () => {
-
-  //   const fileInput = document.getElementById("avtr");
-  //   const file = fileInput.files[0];
-  //   console.log(file);
-  //   // const file = fileInput;
-
-  //   const formData = new FormData();
-  //   formData.append("avatar", file);
-
-  //   fetch("http://localhost:3000/users/edit", {
-  //     method: "POST",
-  //     body: formData,
-  //     credentials: "include",
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       // Lakukan tindakan lain dengan respons dari server
-  //       console.log(data);
-  //     })
-  //     .catch((error) => {
-  //       // Tangani error
-  //       console.error(error);
-  //     });
-
-  //   setdialogs(false);
-  // };
-
-  // const profileImageShow = storeImage.map(item=>);
 
   return (
     <section className="vh-100" style={{ backgroundColor: "#f4f5f7" }}>
