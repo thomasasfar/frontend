@@ -133,7 +133,7 @@ const FormAsign = () => {
   return (
     <div className="warnabackground badan">
       <Container className="mt-5 mb-5 px-5 pt-3 pb-5 warnacont">
-        <Row>
+        <Row className="mb-3">
           <Col md={3}>
             <h3>Form Assignment</h3>
           </Col>
