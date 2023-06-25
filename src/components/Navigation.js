@@ -27,7 +27,7 @@ function Navigation() {
           </Nav>
           <NavDropdown title={
               <Image src={profile} roundedCircle width={30} height={30} className="mr-2" />} id="basic-nav-dropdown">
-            <NavDropdown.Item href="#profile">
+            <NavDropdown.Item href="/profile">
               Profil Saya
             </NavDropdown.Item>
             <NavDropdown.Divider />
