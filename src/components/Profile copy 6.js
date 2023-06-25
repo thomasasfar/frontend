@@ -11,7 +11,7 @@ import {
 import "../styles/Profile.css";
 import axios from "axios";
 import profilePhoto from "../assets/images/profil.svg";
-
+import pPhoto from "../assets/images/photo.png";
 
 const Profile = () => {
   const [selectedImage, setSelectedImage] = useState(null);
