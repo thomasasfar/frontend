@@ -1,10 +1,24 @@
+import React from "react";
 import { Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
-import "../styles/Navigation.css";
-import profile from "../assets/images/profil.svg";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import profile from "../assets/images/profile.svg";
+import axios from "axios";
 
 function Navigation() {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      // Kirim permintaan logout ke server menggunakan Axios
+      await axios.get("http://localhost:3000/auth/logout");
+
+      // Setelah logout berhasil, arahkan pengguna ke halaman login
+      navigate("/login");
+    } catch (error) {
+      console.error("Terjadi kesalahan saat logout:", error);
+    }
+  };
 
   return (
     <Navbar expand="lg" className="warna-nav" sticky="top">
@@ -44,7 +58,9 @@ function Navigation() {
           >
             <NavDropdown.Item href="/profile">Profil Saya</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="#logout">Keluar</NavDropdown.Item>
+            <NavDropdown.Item href="#logout" onClick={handleLogout}>
+              Keluar
+            </NavDropdown.Item>
           </NavDropdown>
         </Navbar.Collapse>
       </Container>
