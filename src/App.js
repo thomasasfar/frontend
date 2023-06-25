@@ -7,12 +7,14 @@ import Dash from "./components/Dash";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Profile from "./components/Profile";
+import Redirect from "./components/Redirect";
 
 function App() {
   return (
     <div className="fontku warnabadan">
       <BrowserRouter>
         <Routes>
+          <Route path="/" exact element={<Redirect />}></Route>
           <Route path="/login" exact element={<Login />}></Route>
           <Route path="/register" exact element={<Register />}></Route>
         </Routes>
@@ -37,7 +39,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/"
+            path="/home"
             exact
             element={
               <>

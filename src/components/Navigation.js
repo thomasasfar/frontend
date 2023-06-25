@@ -1,10 +1,9 @@
-import { Container, Nav, Navbar, NavDropdown, Image }from "react-bootstrap";
+import { Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
 import "../styles/Navigation.css";
-import profile from "../assets/images/profile.svg";
-import { useLocation } from 'react-router-dom';
+import profile from "../assets/images/profil.svg";
+import { useLocation } from "react-router-dom";
 
 function Navigation() {
-
   const location = useLocation();
 
   return (
@@ -17,19 +16,33 @@ function Navigation() {
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: "100px" }}
             navbarScroll
-            variant="underline" 
+            variant="underline"
             activeKey={location.pathname}
           >
-            <Nav.Link href="/" eventKey="/">Dashboard</Nav.Link>
-            <Nav.Link href="/form" eventKey="/form">Form Saya</Nav.Link>
+            <Nav.Link href="/" eventKey="/">
+              Dashboard
+            </Nav.Link>
+            <Nav.Link href="/form" eventKey="/form">
+              Form Saya
+            </Nav.Link>
             <Nav.Link href="action3">Isi Form</Nav.Link>
-            <Nav.Link href="riwayat" eventKey="/riwayat">Riwayat</Nav.Link>
+            <Nav.Link href="riwayat" eventKey="/riwayat">
+              Riwayat
+            </Nav.Link>
           </Nav>
-          <NavDropdown title={
-              <Image src={profile} roundedCircle width={30} height={30} className="mr-2" />} id="basic-nav-dropdown">
-            <NavDropdown.Item href="/profile">
-              Profil Saya
-            </NavDropdown.Item>
+          <NavDropdown
+            title={
+              <Image
+                src={profile}
+                roundedCircle
+                width={30}
+                height={30}
+                className="mr-2"
+              />
+            }
+            id="basic-nav-dropdown"
+          >
+            <NavDropdown.Item href="/profile">Profil Saya</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="#logout">Keluar</NavDropdown.Item>
           </NavDropdown>
