@@ -23,14 +23,18 @@ const FormAsign = () => {
   const [formDescription, setFormDescription] = useState("");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/forms/formMe", { withCredentials: true })
-      .then((response) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/forms/formMe", {
+          withCredentials: true,
+        });
         setForms(response.data);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error(error);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
 
   const handleModalOpen = (form) => {
@@ -61,72 +65,16 @@ const FormAsign = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3000/forms", requestOptions)
-      .then(function (res) {
-        if (res.status === 200) {
-          window.location.replace("/form");
-        }
-        return res.json();
-      })
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
-    // const formData = new FormData();
-    // formData.append("user_id", "1"); // Menggunakan user_id yang telah Anda dapatkan sebelumnya
-    // formData.append("title", formHeader); // Menyimpan header sebagai title
-    // formData.append("description", formDescription);
-
-    // // console.log(formHeader + " spasi " + formDescription);
-
-    // const axios = require("axios");
-    // const qs = require("qs");
-    // let data = qs.stringify({
-    //   description: "sekarang ada i22sik",
-    //   title: "angga ce",
-    //   user_id: "2",
-    // });
-
-    // let config = {
-    //   method: "post",
-    //   maxBodyLength: Infinity,
-    //   url: "http://localhost:3000/forms",
-    //   headers: {
-    //     "Content-Type": "application/x-www-form-urlencoded",
-    //   },
-    //   data: data,
-    // };
-
-    // // axios
-    // //   .request(config)
-    // //   .then((response) => {
-    // //     console.log(JSON.stringify(response.data));
-    // //   })
-    // //   .catch((error) => {
-    // //     console.log(error);
-    // //   });
-
-    // axios
-    //   .post("http://localhost:3000/forms", formData)
-    //   .then((response) => {
-    //     // Berhasil menambahkan form, lakukan sesuatu jika diperlukan
-    //     // Misalnya, muat ulang data form dengan mengirim permintaan GET baru
-    //     axios
-    //       .get("http://localhost:3000/forms")
-    //       .then((response) => {
-    //         // setForms(response.data);
-    //         console.log(response.data);
-    //       })
-    //       .catch((error) => {
-    //         console.error(error);
-    //       });
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
-
-    // // // Reset nilai formHeader dan formDescription setelah form ditambahkan
-    // // setFormHeader("");
-    // // setFormDescription("");
-    // // setShow(false);
+    try {
+      const res = await fetch("http://localhost:3000/forms", requestOptions);
+      if (res.status === 200) {
+        window.location.replace("/form");
+      }
+      const result = await res.json();
+      console.log(result);
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   return (
