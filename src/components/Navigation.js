@@ -14,6 +14,7 @@ function Navigation() {
       await axios.get("http://localhost:3000/auth/logout");
 
       // Setelah logout berhasil, arahkan pengguna ke halaman login
+      sessionStorage.removeItem("token");
       navigate("/login");
     } catch (error) {
       console.error("Terjadi kesalahan saat logout:", error);
