@@ -3,8 +3,35 @@ import { Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import profile from "../assets/images/profile.svg";
 import axios from "axios";
+import { useState, useEffect } from "react";
 
 function Navigation() {
+  const [avatarURL, setAvatarURL] = useState(null);
+
+  const requestOptions = {
+    method: "GET",
+    credentials: "include",
+    redirect: "follow",
+  };
+
+  useEffect(() => {
+    fetch("http://localhost:3000/avatar", requestOptions) // Ganti dengan URL endpoint server yang sesuai
+      .then((response) => {
+        if (response.ok) {
+          return response.blob();
+        }
+        throw new Error("Terjadi kesalahan saat mengambil avatar");
+      })
+      .then((blob) => {
+        const url = URL.createObjectURL(blob);
+        setAvatarURL(url);
+      })
+      .catch((error) => {
+        console.error(error);
+        setAvatarURL(profile);
+      });
+  }, []);
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -47,12 +74,22 @@ function Navigation() {
           </Nav>
           <NavDropdown
             title={
-              <Image
-                src={profile}
-                roundedCircle
-                width={30}
-                height={30}
+              <img
+                src={avatarURL}
+                alt="Avatar"
                 className="mr-2"
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "50%",
+                }}
+                rounded
+                // src={avatarURL}
+                // roundedCircle
+                // width={30}
+                // height={30}
+                // borderRadius="50%"
+                // className="mr-2"
               />
             }
             id="basic-nav-dropdown"
