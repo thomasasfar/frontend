@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import "./App.css";
-import FormAsign from "./components/FormAsign";
+import FormAssign from "./components/FormAssign";
 import Riwayat from "./components/Riwayat";
 import Dash from "./components/Dash";
 import Login from "./components/Login";
@@ -15,12 +15,38 @@ function App() {
           <Route path="/login" exact element={<Login />}></Route>
           <Route path="/register" exact element={<Register />}></Route>
         </Routes>
-        
-        
+
         <Routes>
-          <Route path="/form" exact element={<> <Navigation /> <FormAsign /> </>} />
-          <Route path="/riwayat" exact element={<> <Navigation /> <Riwayat /> </> }></Route>
-          <Route path="/" exact element={<> <Navigation /> <Dash /> </>}></Route>
+          <Route
+            path="/form"
+            exact
+            element={
+              <>
+                {" "}
+                <Navigation /> <FormAssign />{" "}
+              </>
+            }
+          />
+          <Route
+            path="/riwayat"
+            exact
+            element={
+              <>
+                {" "}
+                <Navigation /> <Riwayat />{" "}
+              </>
+            }
+          ></Route>
+          <Route
+            path="/"
+            exact
+            element={
+              <>
+                {" "}
+                <Navigation /> <Dash />{" "}
+              </>
+            }
+          ></Route>
         </Routes>
       </BrowserRouter>
     </div>
