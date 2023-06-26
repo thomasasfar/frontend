@@ -49,7 +49,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/"
+            path="/home"
             exact
             element={
               <>

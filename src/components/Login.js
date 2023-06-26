@@ -28,7 +28,7 @@ const Login = () => {
       }
       if (data) {
         sessionStorage.setItem("token", data.token);
-        window.location.replace("/");
+        window.location.replace("/home");
       }
     } catch (err) {
       console.log(err);

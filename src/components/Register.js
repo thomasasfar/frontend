@@ -12,14 +12,14 @@ const Register = () => {
   const [msg, setMsg] = useState("");
   const history = useNavigate();
 
-  const Register = async (e) => {
+  const Register1 = async (e) => {
     e.preventDefault();
 
     if (!name || !email || !username || !password || !confPassword) {
       setMsg("Please fill in all fields");
       return;
     }
-  
+
     if (password !== confPassword) {
       setMsg("Passwords do not match");
       return;
@@ -79,7 +79,7 @@ const Register = () => {
             offset={{ xl: 0 }}
             className="mt-1 px-3 py-1"
           >
-            <Form id="register" onSubmit={Register}>
+            <Form id="register" onSubmit={Register1}>
               <div className="card-body p-3 text-center">
                 <i className="judul">Register to Kumpulin</i>
               </div>
