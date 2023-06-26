@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Dialog } from "primereact/dialog";
-import { Button } from "primereact/button";
+// import { Buttons } from "primereact/button";
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css";
@@ -11,7 +11,7 @@ import {
   Row,
   Col,
   Card,
-  // Button,
+  Button,
   Form,
   // Image,
 } from "react-bootstrap";
@@ -22,7 +22,6 @@ import pPhoto from "../assets/images/photo.png";
 
 const Profile = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const fileInputRef = useRef(null);
 
   const [editMode, setEditMode] = useState(false);
   const [name, setName] = useState("");
@@ -262,10 +261,11 @@ const Profile = () => {
 
                           <Button
                             onClick={handleUploadButtonClick}
-                            className="flex justify-content-around w-12 mt-4"
-                            label="Save"
-                            icon="pi pi-check"
-                          />
+                            className="flex flex-column justify-content-around w-12 mt-4"
+                            variant="dark"
+                          >
+                            Save
+                          </Button>
                         </div>
                       </div>
                     </div>
@@ -377,6 +377,8 @@ const Profile = () => {
                             <Form.Control
                               plaintext
                               readOnly
+                              defaultValue={email}
+                              onClick={handleEdit}
                               style={{
                                 border: "none",
                                 borderRadius: 0,
@@ -398,7 +400,9 @@ const Profile = () => {
                         </Button>
                       </Col>
                       <Col md={{ span: 2 }} sm={6}>
-                        <Button variant="primary">Edit</Button>
+                        <Button variant="primary" onClick={handleSave}>
+                          Edit
+                        </Button>
                       </Col>
                     </Row>
                   </div>
