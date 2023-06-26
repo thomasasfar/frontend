@@ -10,8 +10,11 @@ const Redirect = () => {
     const isLoggedIn = checkLoginStatus();
 
     if (!isLoggedIn) {
-      navigate("/login");
       // Jika pengguna belum login, arahkan ke halaman login
+      navigate("/login");
+    } else {
+      // Jika pengguna sudah login, arahkan ke halaman berikutnya (misalnya halaman home)
+      navigate("/home");
     }
   }, [navigate]);
 
