@@ -13,8 +13,6 @@ import Redirect from "./Redirect";
 import { async } from "q";
 
 const Attendance = () => {
-  Redirect();
-
   const [attendances, setAtten] = useState([]);
 
   useEffect(() => {

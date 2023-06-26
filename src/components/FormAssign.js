@@ -29,7 +29,7 @@ const FormAsign = () => {
 
   // pagination
   const [page, setPage] = useState(0);
-  const [limit, setLimit] = useState(5 );
+  const [limit, setLimit] = useState(5);
   const [pages, setPages] = useState(0);
   const [rows, setRows] = useState(0);
   const [keyword, setKeyword] = useState("");
@@ -99,7 +99,10 @@ const FormAsign = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:3000/forms/formMe", requestOptions);
+      const res = await fetch(
+        "http://localhost:3000/forms/formMe",
+        requestOptions
+      );
       if (res.status === 200) {
         window.location.replace("/form");
       }
@@ -118,7 +121,7 @@ const FormAsign = () => {
         {
           withCredentials: true,
         },
-        console.log(formId),
+        console.log(formId)
       );
       if (response.status === 200) {
         // Menghapus form dari daftar setelah berhasil dihapus

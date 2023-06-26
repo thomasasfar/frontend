@@ -13,8 +13,6 @@ import Redirect from "./Redirect";
 import { async } from "q";
 
 const Riwayat = () => {
-  Redirect();
-
   const [show, setShow] = useState(false);
   const [showModalForm, setShowModalForm] = useState(false); // Add state for the "Add New Form" modal
 
