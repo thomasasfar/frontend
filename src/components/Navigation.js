@@ -65,11 +65,11 @@ function Navigation() {
               Dashboard
             </Nav.Link>
             <Nav.Link href="/form" eventKey="/form">
-              Form Saya
+              My Form
             </Nav.Link>
-            <Nav.Link href="attd">Isi Form</Nav.Link>
+            <Nav.Link href="attd">Attendance</Nav.Link>
             <Nav.Link href="riwayat" eventKey="/riwayat">
-              Riwayat
+              Submission
             </Nav.Link>
           </Nav>
           <NavDropdown
