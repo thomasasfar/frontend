@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Profile from "./components/Profile";
 import Redirect from "./components/Redirect";
+import Attendancece from "./components/Attendance";
 
 function App() {
   return (
@@ -26,6 +27,15 @@ function App() {
             element={
               <>
                 <Navigation /> <FormAssign />
+              </>
+            }
+          />
+          <Route
+            path="/attd"
+            exact
+            element={
+              <>
+                <Navigation /> <Attendancece />
               </>
             }
           />

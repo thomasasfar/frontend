@@ -30,7 +30,9 @@ const Riwayat = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/submissions", { withCredentials: true })
+      .get("http://localhost:3000/submissions/riwayat", {
+        withCredentials: true,
+      })
       .then((response) => {
         setSubmissions(response.data);
         console.log(response.data);
@@ -94,6 +96,7 @@ const Riwayat = () => {
 
   const handleSaveChanges = () => {
     setShowModalForm(false); // Close the "Add New Form" modal
+    window.location.replace("/riwayat");
   };
 
   const handleModalOpen1 = () => {

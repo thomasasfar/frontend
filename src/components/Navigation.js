@@ -67,7 +67,7 @@ function Navigation() {
             <Nav.Link href="/form" eventKey="/form">
               Form Saya
             </Nav.Link>
-            <Nav.Link href="action3">Isi Form</Nav.Link>
+            <Nav.Link href="attd">Isi Form</Nav.Link>
             <Nav.Link href="riwayat" eventKey="/riwayat">
               Riwayat
             </Nav.Link>
