@@ -12,11 +12,10 @@ import axios from "axios";
 import ReactPaginate from "react-paginate";
 import "bulma/css/bulma.css";
 import "../styles/FormAsign.css";
+import { Navigate } from "react-router-dom";
 import Redirect from "./Redirect";
 
 const FormAsign = () => {
-  Redirect();
-
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -30,7 +29,7 @@ const FormAsign = () => {
 
   // pagination
   const [page, setPage] = useState(0);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(5 );
   const [pages, setPages] = useState(0);
   const [rows, setRows] = useState(0);
   const [keyword, setKeyword] = useState("");
@@ -43,7 +42,7 @@ const FormAsign = () => {
 
   const getForms = async () => {
     const response = await axios.get(
-      "http://localhost:3000/forms/formMe?page=${page}&limit=${limit}"
+      `http://localhost:3000/forms/formMe?page=${page}&limit=${limit}`
       // `http://localhost:3000/forms`
     );
     setForms(response.data.result);
@@ -100,7 +99,7 @@ const FormAsign = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:3000/forms", requestOptions);
+      const res = await fetch("http://localhost:3000/forms/formMe", requestOptions);
       if (res.status === 200) {
         window.location.replace("/form");
       }
@@ -119,7 +118,7 @@ const FormAsign = () => {
         {
           withCredentials: true,
         },
-        console.log(formId)
+        console.log(formId),
       );
       if (response.status === 200) {
         // Menghapus form dari daftar setelah berhasil dihapus
@@ -178,8 +177,6 @@ const FormAsign = () => {
                     >
                       Detail
                     </Button>
-                  </td>
-                  <td>
                     <Button
                       variant="danger"
                       onClick={() => handleDeleteForm(form)}
@@ -205,7 +202,7 @@ const FormAsign = () => {
           <ReactPaginate
             previousLabel={"< Prev"}
             nextLabel={"Next >"}
-            pageCount={Math.min(10, pages)}
+            pageCount={Math.min(pages)}
             onPageChange={changePage}
             containerClassName={"pagination-list"}
             pageLinkClassName={"pagination-link"}

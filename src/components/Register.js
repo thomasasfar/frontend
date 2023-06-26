@@ -42,24 +42,6 @@ const Register = () => {
       redirect: "follow",
     };
 
-    const checkDuplicateUsername = async (username) => {
-      try {
-        const response = await fetch(`http://localhost:3000/users/check-duplicate/username/${username}`);
-        const data = await response.json();
-    
-    if (data.usernameTaken) {
-      setMsg("Username is already taken");
-      return true;
-    }
-
-    return false;
-  } catch (error) {
-    console.error("Error checking duplicate username:", error);
-    // Handle the error accordingly
-      }
-    };
-    
-
     fetch("http://localhost:3000/auth/register", requestOptions)
       .then(function (res) {
         if (res.status === 200) {

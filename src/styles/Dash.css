@@ -8,3 +8,24 @@
 .badan-dash {
     min-height: 100vh;
 }
+
+.judul-sub {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.judul-dash {
+    font-size: 48px;
+    font-weight: 800;
+    color: #fff;
+    font-style: normal;
+}
+
+.parag-judul {
+    font-size: 32px;
+    font-weight: 400;
+    color: #fff;
+    font-style: initial;
+}
